@@ -6,9 +6,12 @@
   --primary-color: #155dfc;
   --dark-blue-color: #274760;
   --blur-color: #447dfd;
-  --muted-blue-grey:#4A5565;
-  --services-cart-Border:#E5E7EB;
-  --services-cart-Bg:#F8FBFF;
+  --muted-blue-grey: #4a5565;
+  --services-cart-Border: #e5e7eb;
+  --services-cart-Bg: #f8fbff;
+  --appointment-section-bg: #f5f9fe;
+  --appointment-cart-description: #536288;
+  --appointment-cart-title: #0f2f64;
 }
 
 @theme inline {
@@ -17,12 +20,17 @@
   --color-primary-color: var(--primary-color);
   --color-blur-color: var(--blur-color);
   --color-dark-blue-color: var(--dark-blue-color);
-  --color-muted-blue-grey:var(--muted-blue-grey);
-  --color-services-cart-Border:var(--services-cart-Border);
-  --color-services-cart-Bg:var(--services-cart-Bg);
+  --color-muted-blue-grey: var(--muted-blue-grey);
+  --color-services-cart-Border: var(--services-cart-Border);
+  --color-services-cart-Bg: var(--services-cart-Bg);
+  --color-appointment-section-bg: var(--appointment-section-bg);
+  --color-appointment-cart-description: var(--appointment-cart-description);
+  --color-appointment-cart-title: var(--appointment-cart-title);
   --font-urbanist: var(--font-urbanist);
   --font-figtree: var(--font-figtree);
   --font-poppins: var(--font-poppins);
+  --font-inter: var(--font-inter);
+  --font-outfit: var(--font-outfit);
 }
 
 @media (prefers-color-scheme: dark) {

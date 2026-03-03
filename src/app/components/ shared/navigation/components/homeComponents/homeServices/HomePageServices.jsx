@@ -7,7 +7,7 @@ const HomePageServices = () => {
   return (
     <div
       className="w-full h-auto md:max-w-[1920px] md:max-h-[1016px]
-    flex gap-10 md:gap-0 flex-col justify-center items-center my-[160px] relative"
+    flex flex-col gap-[10px] justify-center items-center my-[160px] relative"
     >
       {/* homeServicesDegine1st */}
       <HomeServicesPageDegine rote={"true"}/>

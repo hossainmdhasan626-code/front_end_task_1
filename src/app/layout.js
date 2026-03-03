@@ -1,21 +1,31 @@
-import { Urbanist,Figtree,Poppins } from "next/font/google";
+import { Urbanist, Figtree, Poppins, Inter, Outfit } from "next/font/google";
 import "./globals.css";
 import Header from "./components/ shared/header/Header";
 
 const urbanist = Urbanist({
-  weight:["600", "500"],
-  variable:"--font-urbanist",
+  weight: ["600", "500"],
+  variable: "--font-urbanist",
 });
 
-const  figtree = Figtree({
-  weight :["700",],
-  variable:"--font-figtree"
+const figtree = Figtree({
+  weight: ["700"],
+  variable: "--font-figtree",
 });
 
 const poppins = Poppins({
-  weight:["400"],
-  variable:"--font-poppins",
-})
+  weight: ["400"],
+  variable: "--font-poppins",
+});
+
+const inter = Inter({
+  weight: ["500"],
+  variable: "--font-inter",
+});
+
+const outfit = Outfit({
+  weight: ["400"],
+  variable: "--font-outfit",
+});
 
 export const metadata = {
   title: "Create Next App",
@@ -26,7 +36,8 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body
-        className={" antialiased w-full min-h-screen overflow-x-hidden"}
+        className={`${outfit.variable} ${urbanist.variable} ${figtree.variable} ${poppins.variable} ${inter.variable}
+        antialiased w-full min-h-screen overflow-x-hidden`}
       >
         {/* applicationHeader */}
         <Header />

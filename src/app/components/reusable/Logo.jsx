@@ -2,7 +2,7 @@
 
 const Logo = () => {
   return (
-    <div>
+    <div className="py-10 md:py-0 flex justify-center">
       <svg
         width="173"
         height="28"

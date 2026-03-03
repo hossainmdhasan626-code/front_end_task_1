@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
-const HeaderNavigationTabSection = () => {
+const HeaderNavigationForMobile = () => {
   const pathName = usePathname();
 
   // mockData
@@ -31,7 +31,7 @@ const HeaderNavigationTabSection = () => {
   ];
 
   return (
-    <div className="h-7 md:flex gap-10 hidden md:block">
+    <div className="h-7 flex gap-3 ">
       {tabSectionLabels?.map((tab) => {
         const isActive = pathName === tab?.link;
 
@@ -53,4 +53,4 @@ const HeaderNavigationTabSection = () => {
   );
 };
 
-export default HeaderNavigationTabSection;
+export default HeaderNavigationForMobile;

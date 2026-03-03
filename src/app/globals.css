@@ -5,15 +5,18 @@
   --foreground: #171717;
   --primary-color: #155dfc;
   --dark-blue-color: #274760;
+  --blur-color: #447dfd;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-primary-color: var(--primary-color);
+  --color-blur-color: var(--blur-color);
   --color-dark-blue-color: var(--dark-blue-color);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --font-urbanist: var(--font-urbanist);
+  --font-figtree: var(--font-figtree);
+  --font-poppins: var(--font-poppins);
 }
 
 @media (prefers-color-scheme: dark) {

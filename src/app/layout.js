@@ -1,16 +1,21 @@
-import { Geist, Geist_Mono } from "next/font/google";
+import { Urbanist,Figtree,Poppins } from "next/font/google";
 import "./globals.css";
 import Header from "./components/ shared/header/Header";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
+const urbanist = Urbanist({
+  weight:["600", "500"],
+  variable:"--font-urbanist",
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
+const  figtree = Figtree({
+  weight :["700",],
+  variable:"--font-figtree"
 });
+
+const poppins = Poppins({
+  weight:["400"],
+  variable:"--font-poppins",
+})
 
 export const metadata = {
   title: "Create Next App",
@@ -21,7 +26,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={" antialiased max-w-[1920px] max-h-[964px] overflow-hidden"}
       >
         {/* applicationHeader */}
         <Header />

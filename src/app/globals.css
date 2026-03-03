@@ -6,6 +6,9 @@
   --primary-color: #155dfc;
   --dark-blue-color: #274760;
   --blur-color: #447dfd;
+  --muted-blue-grey:#4A5565;
+  --services-cart-Border:#E5E7EB;
+  --services-cart-Bg:#F8FBFF;
 }
 
 @theme inline {
@@ -14,6 +17,9 @@
   --color-primary-color: var(--primary-color);
   --color-blur-color: var(--blur-color);
   --color-dark-blue-color: var(--dark-blue-color);
+  --color-muted-blue-grey:var(--muted-blue-grey);
+  --color-services-cart-Border:var(--services-cart-Border);
+  --color-services-cart-Bg:var(--services-cart-Bg);
   --font-urbanist: var(--font-urbanist);
   --font-figtree: var(--font-figtree);
   --font-poppins: var(--font-poppins);

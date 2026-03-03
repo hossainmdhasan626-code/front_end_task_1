@@ -3,8 +3,8 @@ import React from "react";
 const HomePageAboutTaxt = () => {
   return (
     <div
-      className="w-[95%] md:w-[596px] h-[264px] md:h-[529px]
-    flex flex-col gap-[15px] md:gap-[40px]"
+      className="w-[95%] mt-10 md:mt-0 mb-20 md:mb-0 md:w-[596px] h-[264px] 
+    md:h-[529px] flex flex-col gap-[15px] md:gap-[40px]"
     >
       {/* title */}
       <div className="text-center md:text-left">

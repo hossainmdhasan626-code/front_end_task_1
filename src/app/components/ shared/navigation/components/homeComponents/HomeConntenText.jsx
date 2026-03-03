@@ -50,7 +50,7 @@ const HomeConntenText = () => {
           </>
         }
         className={
-          "bg-primary-color  flex gap-[10px] items-center justify-between h-15 w-[256px] rounded-[10px] py-4 px-8 font-urbanist font-semibold"
+          "bg-primary-color flex gap-[10px] items-center justify-between h-15 w-[256px] rounded-[10px] py-4 px-8 font-urbanist font-semibold"
         }
       />
     </div>

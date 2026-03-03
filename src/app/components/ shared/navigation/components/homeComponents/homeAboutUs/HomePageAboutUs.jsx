@@ -11,6 +11,8 @@ const HomePageAboutUs = () => {
 
       {/* homePageAboutTaxt */}
       <HomePageAboutTaxt />
+
+      {/* homePageServices */}
     </div>
   );
 };

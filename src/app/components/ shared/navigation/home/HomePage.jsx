@@ -2,6 +2,7 @@ import HomeConten from "../components/homeComponents/HomeConten";
 import HomeAppointment from "../components/homeComponents/appointment/HomeAppointment";
 import HomePageAboutUs from "../components/homeComponents/homeAboutUs/HomePageAboutUs";
 import HomePageServices from "../components/homeComponents/homeServices/HomePageServices";
+import HomeReview from "../components/homeComponents/review/HomeReview";
 
 const HomePage = () => {
   return (
@@ -25,6 +26,9 @@ const HomePage = () => {
       <section>
         <HomeAppointment />
       </section>
+
+      {/* review */}
+      <HomeReview />
     </section>
   );
 };

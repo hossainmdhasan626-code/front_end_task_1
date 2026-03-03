@@ -1,0 +1,88 @@
+const infiniteMarqueeData = [
+  {
+    id: 1,
+    name: "Alejandro Ebert",
+    username: "@Alejandro_Ebert",
+    image: "https://i.pravatar.cc/150?u=1",
+    text: "Odio massa non tellus hendrerit mattis integer urna euismod. Tellus lorem mattis vitae viverra. Tortor eget proin quis donec lobortis laoreet. Vulputate nulla quam.",
+  },
+  {
+    id: 2,
+    name: "Monique Kohler",
+    username: "@Monique_Kohler",
+    image: "https://i.pravatar.cc/150?u=2",
+    text: "Quam porttitor sagittis nunc tortor. Suspendisse placerat morbi nisl velit lectus massa mattis adipiscing. Molestie aliquam commodo id laoreet tortor. Tincidunt.",
+  },
+  {
+    id: 3,
+    name: "Sarah Riley",
+    username: "@sarahriley",
+    image: "https://i.pravatar.cc/150?u=3",
+    text: "Diam amet dictumst urna tincidunt amet phasellus amet. Orci congue ut sit nibh aliquet ultrices aliquet sem. At sed aenean eget justo mi. Laoreet purus vitae lacus est.",
+  },
+  {
+    id: 4,
+    name: "Bob Hackett",
+    username: "@Bob_Hackett",
+    image: "https://i.pravatar.cc/150?u=4",
+    text: "Imperdiet eu sed morbi maecenas eget at enim. Sodales egestas vel vulputate ut posuere enim sed enim vel. Sit viverra pulvinar et duis blandit turpis morbi tempor.",
+  },
+  {
+    id: 5,
+    name: "Candace Koss",
+    username: "@Candace.Koss",
+    image: "https://i.pravatar.cc/150?u=5",
+    text: "Eget urna imperdiet urna nullam porta. Vulputate cras in sit lobortis nunc lobortis mauris. Fringilla et sagittis euismod non vestibulum bibendum orci risus. Hac in.",
+  },
+  {
+    id: 6,
+    name: "Milton Halvorson",
+    username: "@Milton_Halvorson",
+    image: "https://i.pravatar.cc/150?u=6",
+    text: "Adipiscing fringilla in consectetur mus cursus porttitor metus odio gravida. Dui mi id tristique sit quam egestas adipiscing. Sed augue porta id sed mollis. Tincidunt.",
+  },
+  {
+    id: 7,
+    name: "Ernesto Terry",
+    username: "@Ernesto_Terry",
+    image: "https://i.pravatar.cc/150?u=7",
+    text: "Penatibus tincidunt urna consectetur adipiscing etiam cras vitae vitae. Neque cursus justo habitant bibendum. Nunc vitae tincidunt eleifend convallis interdum sit.",
+  },
+  {
+    id: 8,
+    name: "Sarah Riley",
+    username: "@sarahriley_2",
+    image: "https://i.pravatar.cc/150?u=8",
+    text: "Viverra enim cursus augue cum sapien eu a lectus habitant et eu fringilla id praesent eget at tristique a at varius at faucibus etiam dui mi blandit mauris ut.",
+  },
+  {
+    id: 9,
+    name: "Laverne Wyman",
+    username: "@Laverne_Wyman86",
+    image: "https://i.pravatar.cc/150?u=9",
+    text: "Imperdiet eu sed morbi maecenas eget at enim. Sodales egestas vel vulputate ut posuere enim sed enim vel.",
+  },
+  {
+    id: 10,
+    name: "John Doe",
+    username: "@johndoe",
+    image: "https://i.pravatar.cc/150?u=10",
+    text: "Amet dictumst urna tincidunt amet phasellus amet. Orci congue ut sit nibh aliquet ultrices aliquet sem.",
+  },
+  {
+    id: 11,
+    name: "Emma Wilson",
+    username: "@emma_w",
+    image: "https://i.pravatar.cc/150?u=11",
+    text: "Quam porttitor sagittis nunc tortor. Suspendisse placerat morbi nisl velit lectus massa mattis adipiscing.",
+  },
+  {
+    id: 12,
+    name: "Michael Scott",
+    username: "@boss_michael",
+    image: "https://i.pravatar.cc/150?u=12",
+    text: "Sodales egestas vel vulputate ut posuere enim sed enim vel. Sit viverra pulvinar et duis blandit.",
+  },
+];
+
+export default infiniteMarqueeData;

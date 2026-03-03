@@ -12,7 +12,7 @@ const InfiniteMarquee = ({ data, speed = 40 }) => {
   const secondRowData = [...secondRow, ...secondRow];
 
   return (
-    <div className="relative w-full overflow-hidden bg-white py-10 flex flex-col gap-8">
+    <div className=" relative w-full overflow-hidden bg-white py-10 flex flex-col gap-8">
       {/* দুই পাশে শ্যাডো এফেক্ট - যা পুরো সেকশন জুড়ে থাকবে */}
       <div className="absolute inset-y-0 left-0 w-32 bg-gradient-to-r from-white to-transparent z-10 pointer-events-none"></div>
       <div className="absolute inset-y-0 right-0 w-32 bg-gradient-to-l from-white to-transparent z-10 pointer-events-none"></div>

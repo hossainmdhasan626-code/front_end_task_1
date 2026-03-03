@@ -31,6 +31,7 @@
   --font-poppins: var(--font-poppins);
   --font-inter: var(--font-inter);
   --font-outfit: var(--font-outfit);
+  --font-hind: var(--font-hind);
 }
 
 @media (prefers-color-scheme: dark) {

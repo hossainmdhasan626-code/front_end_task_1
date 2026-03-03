@@ -2,6 +2,7 @@ import HomeConten from "../components/homeComponents/HomeConten";
 import HomeAppointment from "../components/homeComponents/appointment/HomeAppointment";
 import HomePageAboutUs from "../components/homeComponents/homeAboutUs/HomePageAboutUs";
 import HomePageServices from "../components/homeComponents/homeServices/HomePageServices";
+import HomeQuestions from "../components/homeComponents/questions/HomeQuestions";
 import HomeReview from "../components/homeComponents/review/HomeReview";
 
 const HomePage = () => {
@@ -29,6 +30,9 @@ const HomePage = () => {
 
       {/* review */}
       <HomeReview />
+
+      {/* question */}
+      <HomeQuestions/>
     </section>
   );
 };

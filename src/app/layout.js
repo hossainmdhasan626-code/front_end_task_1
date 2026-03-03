@@ -26,7 +26,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body
-        className={" antialiased max-w-[1920px] max-h-[964px] overflow-hidden"}
+        className={" antialiased w-full min-h-screen overflow-x-hidden"}
       >
         {/* applicationHeader */}
         <Header />

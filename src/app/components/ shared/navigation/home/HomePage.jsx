@@ -1,4 +1,5 @@
 import HomeConten from "../components/homeComponents/HomeConten";
+import HomePageAboutUs from "../components/homeComponents/HomePageAboutUs";
 
 const HomePage = () => {
   return (
@@ -6,6 +7,10 @@ const HomePage = () => {
       {/* home */}
       <section className="">
         <HomeConten />
+      </section>
+      {/* homeAboutUs */}
+      <section>
+        <HomePageAboutUs/>
       </section>
     </section>
   );

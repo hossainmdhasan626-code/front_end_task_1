@@ -70,23 +70,22 @@ const HomeAccordion = () => {
             expanded={isOpen}
             onChange={handleChange(item.id)}
             disableGutters
-            elevation={0} // ডিফল্ট শ্যাডো রিমুভ
+            elevation={0}
             sx={{
-              borderRadius: "20px !important", // ফিগমা অনুযায়ী রাউন্ডেড কোণা
-              border: "1px solid #EAF2FF", // ডিফল্ট বর্ডার
-              backgroundColor: isOpen ? "#E8EFFF" : "transparent", // সিলেক্টেড হলে কালার চেঞ্জ
+              borderRadius: "20px !important",
+              border: "1px solid #EAF2FF",
+              backgroundColor: isOpen ? "#E8EFFF" : "transparent",
               transition: "all 0.3s ease",
-              "&::before": { display: "none" }, // MUI এর ডিফল্ট ডিভাইডার রিমুভ
-              mb: 2, // আইটেম গুলোর মাঝে গ্যাপ
+              "&::before": { display: "none" },
+              mb: 2,
             }}
           >
             <AccordionSummary
-              // কন্ডিশনাল আইকন লজিক
               expandIcon={isOpen ? <UpIcon /> : <DownIcon />}
               sx={{
                 padding: "16px 32px",
                 "& .MuiAccordionSummary-expandIconWrapper": {
-                  transition: "none", // রোটেশন অফ করে আমরা আমাদের SVG চেঞ্জ করছি
+                  transition: "none",
                   "&.Mui-expanded": { transform: "none" },
                 },
               }}

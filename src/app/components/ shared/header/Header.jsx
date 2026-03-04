@@ -76,7 +76,9 @@ function DrawerAppBar(props) {
         {navItems.map((item) => (
           <ListItem key={item?.id} disablePadding>
             <ListItemButton sx={{ textAlign: "center" }}>
-              <Link href={item?.link}><ListItemText primary={item?.label} /></Link>
+              <Link href={item?.link}>
+                <ListItemText primary={item?.label} />
+              </Link>
             </ListItemButton>
           </ListItem>
         ))}
@@ -88,9 +90,9 @@ function DrawerAppBar(props) {
   //   window !== undefined ? () => window().document.body : undefined;
 
   return (
-    <Box >
+    <Box>
       <CssBaseline />
-      <AppBar component="nav" color="default">
+      <AppBar component="nav" color="default" sx={{position:"sticky",top:0}} >
         <Toolbar>
           <Box
             sx={{
@@ -151,9 +153,7 @@ function DrawerAppBar(props) {
           >
             {navItems.map((item) => (
               <Link key={item?.id} href={item?.link}>
-              <Button  sx={{ color: "black" }}>
-                {item?.label}
-              </Button>
+                <Button sx={{ color: "black" }}>{item?.label}</Button>
               </Link>
             ))}
           </Box>

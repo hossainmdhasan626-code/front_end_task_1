@@ -5,9 +5,11 @@ import {
   Inter,
   Outfit,
   Hind,
+  Cabin,
 } from "next/font/google";
 import "./globals.css";
 import Header from "./components/ shared/header/Header";
+import Footer from "./components/reusable/footer/Footer";
 
 const urbanist = Urbanist({
   weight: ["600", "500"],
@@ -34,6 +36,11 @@ const outfit = Outfit({
   variable: "--font-outfit",
 });
 
+const cabin = Cabin({
+  weight: ["400", "700"],
+  variable: "--font-cabin",
+});
+
 const hindVadodara = Hind({
   weight: ["400"],
   variable: "--font-hind",
@@ -48,12 +55,13 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body
-        className={`${hindVadodara.variable} ${outfit.variable} ${urbanist.variable} ${figtree.variable} ${poppins.variable} ${inter.variable}
+        className={`${cabin.variable} ${hindVadodara.variable} ${outfit.variable} ${urbanist.variable} ${figtree.variable} ${poppins.variable} ${inter.variable}
         antialiased w-full min-h-screen overflow-x-hidden`}
       >
         {/* applicationHeader */}
         <Header />
         {children}
+        <Footer/>
       </body>
     </html>
   );

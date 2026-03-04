@@ -1,5 +1,6 @@
 import HomeConten from "../components/homeComponents/HomeConten";
 import HomeAppointment from "../components/homeComponents/appointment/HomeAppointment";
+import HomeContactUs from "../components/homeComponents/contactUs/HomeContactUs";
 import HomePageAboutUs from "../components/homeComponents/homeAboutUs/HomePageAboutUs";
 import HomePageServices from "../components/homeComponents/homeServices/HomePageServices";
 import HomeQuestions from "../components/homeComponents/questions/HomeQuestions";
@@ -32,7 +33,10 @@ const HomePage = () => {
       <HomeReview />
 
       {/* question */}
-      <HomeQuestions/>
+      <HomeQuestions />
+
+      {/* contactUs */}
+      <HomeContactUs />
     </section>
   );
 };

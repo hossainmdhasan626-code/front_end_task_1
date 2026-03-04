@@ -12,6 +12,8 @@
   --appointment-section-bg: #f5f9fe;
   --appointment-cart-description: #536288;
   --appointment-cart-title: #0f2f64;
+  --contact-us-text: #323c4a;
+  --footer-bg: #09276a;
 }
 
 @theme inline {
@@ -26,12 +28,15 @@
   --color-appointment-section-bg: var(--appointment-section-bg);
   --color-appointment-cart-description: var(--appointment-cart-description);
   --color-appointment-cart-title: var(--appointment-cart-title);
+  --color-contact-us-text: var(--contact-us-text);
+  --color-footer-bg: var(--footer-bg);
   --font-urbanist: var(--font-urbanist);
   --font-figtree: var(--font-figtree);
   --font-poppins: var(--font-poppins);
   --font-inter: var(--font-inter);
   --font-outfit: var(--font-outfit);
   --font-hind: var(--font-hind);
+  --font-cabin: var(--font-cabin);
 }
 
 @media (prefers-color-scheme: dark) {

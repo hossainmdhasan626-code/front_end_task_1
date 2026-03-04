@@ -12,7 +12,7 @@ import Header from "./components/ shared/header/Header";
 import Footer from "./components/reusable/footer/Footer";
 
 const urbanist = Urbanist({
-  weight: ["600", "500"],
+  weight: ["600", "500","400"],
   variable: "--font-urbanist",
 });
 

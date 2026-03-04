@@ -10,13 +10,13 @@ import {
 } from "@mui/material";
 
 const HomeAccordion = () => {
-  const [expanded, setExpanded] = useState(3); // ৩ নম্বর আইডি ডিফল্টভাবে খোলা
+  const [expanded, setExpanded] = useState(3); // 3NumbarTaDefaultKhola
 
   const handleChange = (panelId) => (event, isExpanded) => {
     setExpanded(isExpanded ? panelId : null);
   };
 
-  // কাস্টম ডাউন অ্যারো (বিনা ওপেন অবস্থায়)
+  // downIconOrSvg
   const DownIcon = () => (
     <svg
       width="28"
@@ -32,7 +32,7 @@ const HomeAccordion = () => {
     </svg>
   );
 
-  // কাস্টম আপ অ্যারো (ওপেন অবস্থায়)
+  // openIconOrSvg
   const UpIcon = () => (
     <svg
       width="28"

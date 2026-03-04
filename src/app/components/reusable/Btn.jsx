@@ -1,9 +1,10 @@
-import React from 'react'
 
-const Btn = ({label,className}) => {
-  return (
-    <button className={className}>{label}</button>
-  )
-}
-
-export default Btn
+const Btn = ({ children, className, ...props }) => (
+  <button
+    className={`flex items-center justify-center font-medium transition-all ${className}`}
+    {...props}
+  >
+    {children}
+  </button>
+);
+export default Btn;

@@ -1,7 +1,9 @@
+import AboutPage from "../components/ shared/navigation/aboutus/AboutPage";
+
 const page = () => {
   return (
     <>
-      <h3>about page</h3>
+     <AboutPage/>
     </>
   );
 };

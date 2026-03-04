@@ -1,4 +1,5 @@
 import Btn from "@/app/components/reusable/Btn";
+import Link from "next/link";
 
 const HomeConntenText = () => {
   return (
@@ -28,35 +29,31 @@ const HomeConntenText = () => {
       </div>
 
       {/* btnForBookAppointment */}
+     <Link href={"/services"}>
       <Btn
-        label={
-          <>
-            Book Appointment{" "}
-            <svg
-              width="28"
-              height="28"
-              viewBox="0 0 28 28"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                d="M15.1673 20.9995L22.1673 13.9995L15.1673 6.99951M21.584 13.9995H5.83398"
-                stroke="white"
-                strokeWidth="1.75"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              />
-            </svg>
-          </>
-        }
         className={
-          "bg-primary-color flex gap-[10px] items-center justify-between h-15 w-[256px] rounded-[10px] py-4 px-8 font-urbanist font-semibold"
+          "bg-primary-color flex gap-[10px] items-center justify-between mt-10 md:mt-0 h-15 w-[256px] rounded-[10px] py-4 px-8 font-urbanist font-semibold"
         }
-      />
+      >
+        Book Appointment{" "}
+          <svg
+            width="28"
+            height="28"
+            viewBox="0 0 28 28"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M15.1673 20.9995L22.1673 13.9995L15.1673 6.99951M21.584 13.9995H5.83398"
+              stroke="white"
+              strokeWidth="1.75"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            />
+          </svg>
+      </Btn></Link>
     </div>
   );
 };
 
 export default HomeConntenText;
-
-

@@ -2,6 +2,7 @@ import Logo from "../../reusable/Logo";
 import HeaderNavigationTabSection from "./HeaderNavigationTabSection";
 import Btn from "../../reusable/Btn";
 import HeaderForMobile from "./HeaderForMobile";
+import Link from "next/link";
 
 const Header = () => {
   return (
@@ -12,14 +13,17 @@ const Header = () => {
       {/* navigationTabSection */}
       <HeaderNavigationTabSection />
       {/*  */}
-      <HeaderForMobile/>
+      <HeaderForMobile />
       {/* signOrProfile */}
-      <Btn
-        label={"Sign Up"}
-        className={
-          "h-12 w-32 bg-primary-color rounded-xl font-urbanist font-semibold hidden md:block"
-        }
-      />
+      <Link href={"/signIn"}>
+        <Btn
+          className={
+            "h-12 w-32 bg-primary-color rounded-xl font-urbanist font-semibold hidden md:block"
+          }
+        >
+          Sign In
+        </Btn>
+      </Link>
     </header>
   );
 };

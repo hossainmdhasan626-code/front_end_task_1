@@ -8,7 +8,7 @@ const HeaderForMobile = () => {
     <div className="md:hidden flex justify-around items-center">
       <HeaderNavigationForMobile />
       {/* signOrProfile */}
-      <Link href={"/signIn"}>
+      {/* <Link href={"/signIn"}>
         <Btn
           className={
             "h-10 w-30 bg-primary-color rounded-xl font-urbanist font-semibold"
@@ -16,7 +16,7 @@ const HeaderForMobile = () => {
         >
           Sign Ii
         </Btn>
-      </Link>
+      </Link> */}
     </div>
   );
 };

@@ -1,31 +1,240 @@
-import Logo from "../../reusable/Logo";
-import HeaderNavigationTabSection from "./HeaderNavigationTabSection";
-import Btn from "../../reusable/Btn";
-import HeaderForMobile from "./HeaderForMobile";
+"use client";
+import * as React from "react";
+import PropTypes from "prop-types";
+import AppBar from "@mui/material/AppBar";
+import Box from "@mui/material/Box";
+import CssBaseline from "@mui/material/CssBaseline";
+import Divider from "@mui/material/Divider";
+import Drawer from "@mui/material/Drawer";
+import IconButton from "@mui/material/IconButton";
+import List from "@mui/material/List";
+import ListItem from "@mui/material/ListItem";
+import ListItemButton from "@mui/material/ListItemButton";
+import ListItemText from "@mui/material/ListItemText";
+import MenuIcon from "@mui/icons-material/Menu";
+import Toolbar from "@mui/material/Toolbar";
+import Typography from "@mui/material/Typography";
+import Button from "@mui/material/Button";
 import Link from "next/link";
+import Btn from "../../reusable/Btn";
 
-const Header = () => {
-  return (
-    // applicationHeader
-    <header className="  max-w-[1620px] w-full mx-auto h-[150px] md:flex items-center justify-between">
-      {/* applicationLogo */}
-      <Logo />
-      {/* navigationTabSection */}
-      <HeaderNavigationTabSection />
-      {/*  */}
-      <HeaderForMobile />
-      {/* signOrProfile */}
-      <Link href={"/signIn"}>
-        <Btn
-          className={
-            "h-12 w-32 bg-primary-color rounded-xl font-urbanist font-semibold hidden md:block"
-          }
+const drawerWidth = 240;
+// const navItems = ["Home", "About", "Contact"];
+const navItems = [
+  {
+    id: 1,
+    label: "Home",
+    link: "/",
+  },
+  {
+    id: 2,
+    label: "About",
+    link: "/about",
+  },
+  {
+    id: 3,
+    label: "Services",
+    link: "/services",
+  },
+  {
+    id: 4,
+    label: "Contact",
+    link: "/contact",
+  },
+];
+function DrawerAppBar(props) {
+  // const { window } = props;
+  const [mobileOpen, setMobileOpen] = React.useState(false);
+
+  const handleDrawerToggle = () => {
+    setMobileOpen((prevState) => !prevState);
+  };
+
+  const drawer = (
+    <Box onClick={handleDrawerToggle} sx={{ textAlign: "center" }}>
+      <Typography variant="h6" sx={{ my: 2, pl: 4 }}>
+        {/* logo */}
+        <svg
+          width="173"
+          height="28"
+          viewBox="0 0 173 28"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
         >
-          Sign In
-        </Btn>
-      </Link>
-    </header>
+          <path
+            d="M13.159 0.00019456C13.091 0.00372176 13.0246 0.0210236 12.9642 0.0522393C12.9642 0.0522393 7.37545 2.81639 0.406262 3.73778C0.172116 3.76988 -0.00172373 3.96913 1.28967e-05 4.20349V13.9989C1.28967e-05 19.9996 3.31325 23.5591 6.57997 25.5386C9.84667 27.5181 13.1066 27.9947 13.1066 27.9947C13.1529 28.0018 13.2 28.0018 13.2463 27.9947C13.2463 27.9947 16.5063 27.5181 19.773 25.5386C23.0397 23.5591 26.3529 19.9996 26.3529 13.9989V4.20349C26.3549 3.96913 26.1808 3.76984 25.9467 3.73778C18.9775 2.81639 13.3888 0.0522393 13.3888 0.0522393C13.3179 0.0159091 13.2388 -0.00209812 13.159 0.00019456ZM13.1764 5.60149C17.849 5.60149 21.6452 9.36558 21.6452 13.9988C21.6452 18.632 17.849 22.4007 13.1764 22.4007C8.50384 22.4007 4.7077 18.632 4.7077 13.9988C4.7077 9.36558 8.50384 5.60149 13.1764 5.60149ZM11.2932 9.80016V12.136H8.94206C8.68217 12.135 8.47068 12.3431 8.46964 12.6008V15.4014C8.47058 15.6591 8.68217 15.8672 8.94206 15.8662H11.2932V18.202C11.2941 18.4601 11.5063 18.6683 11.7665 18.6668H14.5864C14.8462 18.6677 15.0577 18.4597 15.0588 18.202V15.8662H17.4108C17.6707 15.8671 17.8822 15.6591 17.8832 15.4014V12.6008C17.8823 12.3431 17.6707 12.135 17.4108 12.136H15.0588V9.80016C15.0578 9.54246 14.8462 9.33437 14.5864 9.33536H11.7422C11.4767 9.35882 11.293 9.55995 11.2932 9.80016Z"
+            fill="#155DFC"
+          />
+          <path
+            d="M41.79 25V4H48.63C49.99 4 51.19 4.28 52.23 4.84C53.29 5.4 54.11 6.18 54.69 7.18C55.29 8.18 55.59 9.34 55.59 10.66C55.59 11.94 55.32 13.08 54.78 14.08C54.24 15.08 53.5 15.87 52.56 16.45C51.62 17.01 50.53 17.29 49.29 17.29H44.34V25H41.79ZM44.34 14.98H49.29C50.39 14.98 51.29 14.58 51.99 13.78C52.71 12.96 53.07 11.92 53.07 10.66C53.07 9.36 52.65 8.31 51.81 7.51C50.97 6.71 49.9 6.31 48.6 6.31H44.34V14.98ZM59.6759 16.87C59.6759 15.25 59.9859 13.94 60.6059 12.94C61.2259 11.92 62.0159 11.17 62.9759 10.69C63.9559 10.19 64.9859 9.94 66.0659 9.94V12.19C65.1859 12.19 64.3359 12.34 63.5159 12.64C62.7159 12.92 62.0559 13.39 61.5359 14.05C61.0159 14.71 60.7559 15.61 60.7559 16.75L59.6759 16.87ZM58.3559 25V10H60.7559V25H58.3559ZM75.1226 25.36C73.6626 25.36 72.3626 25.03 71.2226 24.37C70.1026 23.69 69.2226 22.76 68.5826 21.58C67.9426 20.4 67.6226 19.04 67.6226 17.5C67.6226 15.96 67.9326 14.6 68.5526 13.42C69.1926 12.24 70.0726 11.32 71.1926 10.66C72.3326 9.98 73.6226 9.64 75.0626 9.64C76.5426 9.64 77.8426 9.98 78.9626 10.66C80.1026 11.32 80.9826 12.24 81.6026 13.42C82.2426 14.6 82.5626 15.96 82.5626 17.5C82.5626 19.04 82.2426 20.4 81.6026 21.58C80.9826 22.76 80.1126 23.69 78.9926 24.37C77.8726 25.03 76.5826 25.36 75.1226 25.36ZM75.1226 23.14C76.1226 23.14 76.9926 22.9 77.7326 22.42C78.4726 21.94 79.0526 21.28 79.4726 20.44C79.9126 19.6 80.1326 18.62 80.1326 17.5C80.1326 16.38 79.9126 15.4 79.4726 14.56C79.0526 13.72 78.4626 13.06 77.7026 12.58C76.9426 12.1 76.0626 11.86 75.0626 11.86C74.0826 11.86 73.2126 12.1 72.4526 12.58C71.7126 13.06 71.1226 13.72 70.6826 14.56C70.2626 15.4 70.0526 16.38 70.0526 17.5C70.0526 18.6 70.2626 19.58 70.6826 20.44C71.1226 21.28 71.7226 21.94 72.4826 22.42C73.2626 22.9 74.1426 23.14 75.1226 23.14ZM101.015 25V4H103.535V25H101.015ZM86.5849 25V4H89.1349V25H86.5849ZM88.8349 15.34V13.03H101.555V15.34H88.8349ZM114.994 25.36C113.534 25.36 112.244 25.03 111.124 24.37C110.004 23.69 109.124 22.76 108.484 21.58C107.864 20.4 107.554 19.04 107.554 17.5C107.554 15.96 107.864 14.6 108.484 13.42C109.124 12.24 109.994 11.32 111.094 10.66C112.214 9.98 113.494 9.64 114.934 9.64C116.334 9.64 117.544 9.99 118.564 10.69C119.584 11.37 120.374 12.33 120.934 13.57C121.494 14.81 121.774 16.27 121.774 17.95H109.384L109.984 17.44C109.984 18.64 110.194 19.67 110.614 20.53C111.054 21.39 111.664 22.05 112.444 22.51C113.224 22.95 114.114 23.17 115.114 23.17C116.174 23.17 117.064 22.92 117.784 22.42C118.524 21.92 119.094 21.26 119.494 20.44L121.564 21.49C121.184 22.27 120.674 22.95 120.034 23.53C119.414 24.11 118.674 24.56 117.814 24.88C116.974 25.2 116.034 25.36 114.994 25.36ZM110.134 16.42L109.504 15.94H119.854L119.224 16.45C119.224 15.49 119.034 14.66 118.654 13.96C118.274 13.26 117.764 12.72 117.124 12.34C116.484 11.96 115.744 11.77 114.904 11.77C114.084 11.77 113.304 11.96 112.564 12.34C111.844 12.72 111.254 13.26 110.794 13.96C110.354 14.64 110.134 15.46 110.134 16.42ZM134.041 25L133.921 22.54V17.08C133.921 15.9 133.791 14.93 133.531 14.17C133.271 13.39 132.861 12.8 132.301 12.4C131.741 12 131.011 11.8 130.111 11.8C129.291 11.8 128.581 11.97 127.981 12.31C127.401 12.63 126.921 13.15 126.541 13.87L124.381 13.03C124.761 12.33 125.221 11.73 125.761 11.23C126.301 10.71 126.931 10.32 127.651 10.06C128.371 9.78 129.191 9.64 130.111 9.64C131.511 9.64 132.661 9.92 133.561 10.48C134.481 11.02 135.171 11.83 135.631 12.91C136.091 13.97 136.311 15.29 136.291 16.87L136.261 25H134.041ZM129.541 25.36C127.781 25.36 126.401 24.96 125.401 24.16C124.421 23.34 123.931 22.21 123.931 20.77C123.931 19.25 124.431 18.09 125.431 17.29C126.451 16.47 127.871 16.06 129.691 16.06H133.981V18.07H130.231C128.831 18.07 127.831 18.3 127.231 18.76C126.651 19.22 126.361 19.88 126.361 20.74C126.361 21.52 126.651 22.14 127.231 22.6C127.811 23.04 128.621 23.26 129.661 23.26C130.521 23.26 131.271 23.08 131.911 22.72C132.551 22.34 133.041 21.81 133.381 21.13C133.741 20.43 133.921 19.61 133.921 18.67H134.941C134.941 20.71 134.481 22.34 133.561 23.56C132.641 24.76 131.301 25.36 129.541 25.36ZM140.094 25V4H142.494V25H140.094ZM152.326 25.36C150.866 25.36 149.736 24.98 148.936 24.22C148.136 23.46 147.736 22.39 147.736 21.01V5.32H150.136V20.77C150.136 21.53 150.336 22.12 150.736 22.54C151.156 22.94 151.736 23.14 152.476 23.14C152.716 23.14 152.946 23.11 153.166 23.05C153.406 22.97 153.716 22.79 154.096 22.51L155.026 24.46C154.506 24.8 154.036 25.03 153.616 25.15C153.196 25.29 152.766 25.36 152.326 25.36ZM145.126 12.13V10H154.636V12.13H145.126ZM158.024 25V4H160.424V25H158.024ZM168.584 25V17.32H170.984V25H168.584ZM168.584 17.32C168.584 15.84 168.404 14.71 168.044 13.93C167.704 13.15 167.234 12.62 166.634 12.34C166.034 12.04 165.354 11.89 164.594 11.89C163.274 11.89 162.244 12.36 161.504 13.3C160.784 14.22 160.424 15.53 160.424 17.23H159.254C159.254 15.65 159.484 14.29 159.944 13.15C160.424 12.01 161.104 11.14 161.984 10.54C162.864 9.94 163.924 9.64 165.164 9.64C166.324 9.64 167.344 9.88 168.224 10.36C169.104 10.82 169.784 11.56 170.264 12.58C170.764 13.6 171.004 14.94 170.984 16.6V17.32H168.584Z"
+            fill="#155DFC"
+          />
+        </svg>
+      </Typography>
+      <Divider />
+      <List>
+        {navItems.map((item) => (
+          <ListItem key={item?.id} disablePadding>
+            <ListItemButton sx={{ textAlign: "center" }}>
+              <Link href={item?.link}><ListItemText primary={item?.label} /></Link>
+            </ListItemButton>
+          </ListItem>
+        ))}
+      </List>
+    </Box>
   );
+
+  // const container =
+  //   window !== undefined ? () => window().document.body : undefined;
+
+  return (
+    <Box >
+      <CssBaseline />
+      <AppBar component="nav" color="default">
+        <Toolbar>
+          <Box
+            sx={{
+              display: { xs: "flex", sm: "none" },
+              width: "100%",
+              justifyContent: "space-between",
+              alignItems: "center",
+            }}
+          >
+            <IconButton
+              color="inherit"
+              aria-label="open drawer"
+              edge="start"
+              onClick={handleDrawerToggle}
+            >
+              <MenuIcon />
+            </IconButton>
+
+            <Link href={"/signIn"}>
+              <Btn className="h-10 w-30 bg-primary-color rounded-xl font-urbanist font-semibold">
+                Sign In
+              </Btn>
+            </Link>
+          </Box>
+
+          <Typography
+            variant="h6"
+            component="div"
+            sx={{ display: { xs: "none", sm: "block" } }}
+          >
+            {/* logo svg */}
+            <svg
+              width="173"
+              height="28"
+              viewBox="0 0 173 28"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M13.159 0.00019456C13.091 0.00372176 13.0246 0.0210236 12.9642 0.0522393C12.9642 0.0522393 7.37545 2.81639 0.406262 3.73778C0.172116 3.76988 -0.00172373 3.96913 1.28967e-05 4.20349V13.9989C1.28967e-05 19.9996 3.31325 23.5591 6.57997 25.5386C9.84667 27.5181 13.1066 27.9947 13.1066 27.9947C13.1529 28.0018 13.2 28.0018 13.2463 27.9947C13.2463 27.9947 16.5063 27.5181 19.773 25.5386C23.0397 23.5591 26.3529 19.9996 26.3529 13.9989V4.20349C26.3549 3.96913 26.1808 3.76984 25.9467 3.73778C18.9775 2.81639 13.3888 0.0522393 13.3888 0.0522393C13.3179 0.0159091 13.2388 -0.00209812 13.159 0.00019456ZM13.1764 5.60149C17.849 5.60149 21.6452 9.36558 21.6452 13.9988C21.6452 18.632 17.849 22.4007 13.1764 22.4007C8.50384 22.4007 4.7077 18.632 4.7077 13.9988C4.7077 9.36558 8.50384 5.60149 13.1764 5.60149ZM11.2932 9.80016V12.136H8.94206C8.68217 12.135 8.47068 12.3431 8.46964 12.6008V15.4014C8.47058 15.6591 8.68217 15.8672 8.94206 15.8662H11.2932V18.202C11.2941 18.4601 11.5063 18.6683 11.7665 18.6668H14.5864C14.8462 18.6677 15.0577 18.4597 15.0588 18.202V15.8662H17.4108C17.6707 15.8671 17.8822 15.6591 17.8832 15.4014V12.6008C17.8823 12.3431 17.6707 12.135 17.4108 12.136H15.0588V9.80016C15.0578 9.54246 14.8462 9.33437 14.5864 9.33536H11.7422C11.4767 9.35882 11.293 9.55995 11.2932 9.80016Z"
+                fill="#155DFC"
+              />
+              <path
+                d="M41.79 25V4H48.63C49.99 4 51.19 4.28 52.23 4.84C53.29 5.4 54.11 6.18 54.69 7.18C55.29 8.18 55.59 9.34 55.59 10.66C55.59 11.94 55.32 13.08 54.78 14.08C54.24 15.08 53.5 15.87 52.56 16.45C51.62 17.01 50.53 17.29 49.29 17.29H44.34V25H41.79ZM44.34 14.98H49.29C50.39 14.98 51.29 14.58 51.99 13.78C52.71 12.96 53.07 11.92 53.07 10.66C53.07 9.36 52.65 8.31 51.81 7.51C50.97 6.71 49.9 6.31 48.6 6.31H44.34V14.98ZM59.6759 16.87C59.6759 15.25 59.9859 13.94 60.6059 12.94C61.2259 11.92 62.0159 11.17 62.9759 10.69C63.9559 10.19 64.9859 9.94 66.0659 9.94V12.19C65.1859 12.19 64.3359 12.34 63.5159 12.64C62.7159 12.92 62.0559 13.39 61.5359 14.05C61.0159 14.71 60.7559 15.61 60.7559 16.75L59.6759 16.87ZM58.3559 25V10H60.7559V25H58.3559ZM75.1226 25.36C73.6626 25.36 72.3626 25.03 71.2226 24.37C70.1026 23.69 69.2226 22.76 68.5826 21.58C67.9426 20.4 67.6226 19.04 67.6226 17.5C67.6226 15.96 67.9326 14.6 68.5526 13.42C69.1926 12.24 70.0726 11.32 71.1926 10.66C72.3326 9.98 73.6226 9.64 75.0626 9.64C76.5426 9.64 77.8426 9.98 78.9626 10.66C80.1026 11.32 80.9826 12.24 81.6026 13.42C82.2426 14.6 82.5626 15.96 82.5626 17.5C82.5626 19.04 82.2426 20.4 81.6026 21.58C80.9826 22.76 80.1126 23.69 78.9926 24.37C77.8726 25.03 76.5826 25.36 75.1226 25.36ZM75.1226 23.14C76.1226 23.14 76.9926 22.9 77.7326 22.42C78.4726 21.94 79.0526 21.28 79.4726 20.44C79.9126 19.6 80.1326 18.62 80.1326 17.5C80.1326 16.38 79.9126 15.4 79.4726 14.56C79.0526 13.72 78.4626 13.06 77.7026 12.58C76.9426 12.1 76.0626 11.86 75.0626 11.86C74.0826 11.86 73.2126 12.1 72.4526 12.58C71.7126 13.06 71.1226 13.72 70.6826 14.56C70.2626 15.4 70.0526 16.38 70.0526 17.5C70.0526 18.6 70.2626 19.58 70.6826 20.44C71.1226 21.28 71.7226 21.94 72.4826 22.42C73.2626 22.9 74.1426 23.14 75.1226 23.14ZM101.015 25V4H103.535V25H101.015ZM86.5849 25V4H89.1349V25H86.5849ZM88.8349 15.34V13.03H101.555V15.34H88.8349ZM114.994 25.36C113.534 25.36 112.244 25.03 111.124 24.37C110.004 23.69 109.124 22.76 108.484 21.58C107.864 20.4 107.554 19.04 107.554 17.5C107.554 15.96 107.864 14.6 108.484 13.42C109.124 12.24 109.994 11.32 111.094 10.66C112.214 9.98 113.494 9.64 114.934 9.64C116.334 9.64 117.544 9.99 118.564 10.69C119.584 11.37 120.374 12.33 120.934 13.57C121.494 14.81 121.774 16.27 121.774 17.95H109.384L109.984 17.44C109.984 18.64 110.194 19.67 110.614 20.53C111.054 21.39 111.664 22.05 112.444 22.51C113.224 22.95 114.114 23.17 115.114 23.17C116.174 23.17 117.064 22.92 117.784 22.42C118.524 21.92 119.094 21.26 119.494 20.44L121.564 21.49C121.184 22.27 120.674 22.95 120.034 23.53C119.414 24.11 118.674 24.56 117.814 24.88C116.974 25.2 116.034 25.36 114.994 25.36ZM110.134 16.42L109.504 15.94H119.854L119.224 16.45C119.224 15.49 119.034 14.66 118.654 13.96C118.274 13.26 117.764 12.72 117.124 12.34C116.484 11.96 115.744 11.77 114.904 11.77C114.084 11.77 113.304 11.96 112.564 12.34C111.844 12.72 111.254 13.26 110.794 13.96C110.354 14.64 110.134 15.46 110.134 16.42ZM134.041 25L133.921 22.54V17.08C133.921 15.9 133.791 14.93 133.531 14.17C133.271 13.39 132.861 12.8 132.301 12.4C131.741 12 131.011 11.8 130.111 11.8C129.291 11.8 128.581 11.97 127.981 12.31C127.401 12.63 126.921 13.15 126.541 13.87L124.381 13.03C124.761 12.33 125.221 11.73 125.761 11.23C126.301 10.71 126.931 10.32 127.651 10.06C128.371 9.78 129.191 9.64 130.111 9.64C131.511 9.64 132.661 9.92 133.561 10.48C134.481 11.02 135.171 11.83 135.631 12.91C136.091 13.97 136.311 15.29 136.291 16.87L136.261 25H134.041ZM129.541 25.36C127.781 25.36 126.401 24.96 125.401 24.16C124.421 23.34 123.931 22.21 123.931 20.77C123.931 19.25 124.431 18.09 125.431 17.29C126.451 16.47 127.871 16.06 129.691 16.06H133.981V18.07H130.231C128.831 18.07 127.831 18.3 127.231 18.76C126.651 19.22 126.361 19.88 126.361 20.74C126.361 21.52 126.651 22.14 127.231 22.6C127.811 23.04 128.621 23.26 129.661 23.26C130.521 23.26 131.271 23.08 131.911 22.72C132.551 22.34 133.041 21.81 133.381 21.13C133.741 20.43 133.921 19.61 133.921 18.67H134.941C134.941 20.71 134.481 22.34 133.561 23.56C132.641 24.76 131.301 25.36 129.541 25.36ZM140.094 25V4H142.494V25H140.094ZM152.326 25.36C150.866 25.36 149.736 24.98 148.936 24.22C148.136 23.46 147.736 22.39 147.736 21.01V5.32H150.136V20.77C150.136 21.53 150.336 22.12 150.736 22.54C151.156 22.94 151.736 23.14 152.476 23.14C152.716 23.14 152.946 23.11 153.166 23.05C153.406 22.97 153.716 22.79 154.096 22.51L155.026 24.46C154.506 24.8 154.036 25.03 153.616 25.15C153.196 25.29 152.766 25.36 152.326 25.36ZM145.126 12.13V10H154.636V12.13H145.126ZM158.024 25V4H160.424V25H158.024ZM168.584 25V17.32H170.984V25H168.584ZM168.584 17.32C168.584 15.84 168.404 14.71 168.044 13.93C167.704 13.15 167.234 12.62 166.634 12.34C166.034 12.04 165.354 11.89 164.594 11.89C163.274 11.89 162.244 12.36 161.504 13.3C160.784 14.22 160.424 15.53 160.424 17.23H159.254C159.254 15.65 159.484 14.29 159.944 13.15C160.424 12.01 161.104 11.14 161.984 10.54C162.864 9.94 163.924 9.64 165.164 9.64C166.324 9.64 167.344 9.88 168.224 10.36C169.104 10.82 169.784 11.56 170.264 12.58C170.764 13.6 171.004 14.94 170.984 16.6V17.32H168.584Z"
+                fill="#155DFC"
+              />
+            </svg>
+          </Typography>
+
+          {/* DESKTOP (sm+): nav center */}
+          <Box
+            sx={{
+              display: { xs: "none", sm: "flex" },
+              justifyContent: "center",
+              flexGrow: 1,
+              gap: 2,
+            }}
+          >
+            {navItems.map((item) => (
+              <Link key={item?.id} href={item?.link}>
+              <Button  sx={{ color: "black" }}>
+                {item?.label}
+              </Button>
+              </Link>
+            ))}
+          </Box>
+
+          {/* DESKTOP (sm+): sign in right */}
+          <Box sx={{ display: { xs: "none", sm: "block" } }}>
+            <Link href={"/signIn"}>
+              <Btn className="h-10 w-30 bg-primary-color rounded-xl font-urbanist font-semibold">
+                Sign In
+              </Btn>
+            </Link>
+          </Box>
+        </Toolbar>
+      </AppBar>
+      <nav>
+        <Drawer
+          // container={container}
+          variant="temporary"
+          open={mobileOpen}
+          onClose={handleDrawerToggle}
+          ModalProps={{
+            keepMounted: true, // Better open performance on mobile.
+          }}
+          sx={{
+            display: { xs: "block", sm: "none" },
+            "& .MuiDrawer-paper": {
+              boxSizing: "border-box",
+              width: drawerWidth,
+            },
+          }}
+        >
+          {drawer}
+        </Drawer>
+      </nav>
+      {/* <Box component="main" sx={{ p: 3 }}>
+        <Toolbar />
+        <Typography>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique unde
+          fugit veniam eius, perspiciatis sunt? Corporis qui ducimus quibusdam,
+          aliquam dolore excepturi quae. Distinctio enim at eligendi perferendis in
+          cum quibusdam sed quae, accusantium et aperiam? Quod itaque exercitationem,
+          at ab sequi qui modi delectus quia corrupti alias distinctio nostrum.
+          Minima ex dolor modi inventore sapiente necessitatibus aliquam fuga et. Sed
+          numquam quibusdam at officia sapiente porro maxime corrupti perspiciatis
+          asperiores, exercitationem eius nostrum consequuntur iure aliquam itaque,
+          assumenda et! Quibusdam temporibus beatae doloremque voluptatum doloribus
+          soluta accusamus porro reprehenderit eos inventore facere, fugit, molestiae
+          ab officiis illo voluptates recusandae. Vel dolor nobis eius, ratione atque
+          soluta, aliquam fugit qui iste architecto perspiciatis. Nobis, voluptatem!
+          Cumque, eligendi unde aliquid minus quis sit debitis obcaecati error,
+          delectus quo eius exercitationem tempore. Delectus sapiente, provident
+          corporis dolorum quibusdam aut beatae repellendus est labore quisquam
+          praesentium repudiandae non vel laboriosam quo ab perferendis velit ipsa
+          deleniti modi! Ipsam, illo quod. Nesciunt commodi nihil corrupti cum non
+          fugiat praesentium doloremque architecto laborum aliquid. Quae, maxime
+          recusandae? Eveniet dolore molestiae dicta blanditiis est expedita eius
+          debitis cupiditate porro sed aspernatur quidem, repellat nihil quasi
+          praesentium quia eos, quibusdam provident. Incidunt tempore vel placeat
+          voluptate iure labore, repellendus beatae quia unde est aliquid dolor
+          molestias libero. Reiciendis similique exercitationem consequatur, nobis
+          placeat illo laudantium! Enim perferendis nulla soluta magni error,
+          provident repellat similique cupiditate ipsam, et tempore cumque quod! Qui,
+          iure suscipit tempora unde rerum autem saepe nisi vel cupiditate iusto.
+          Illum, corrupti? Fugiat quidem accusantium nulla. Aliquid inventore commodi
+          reprehenderit rerum reiciendis! Quidem alias repudiandae eaque eveniet
+          cumque nihil aliquam in expedita, impedit quas ipsum nesciunt ipsa ullam
+          consequuntur dignissimos numquam at nisi porro a, quaerat rem repellendus.
+          Voluptates perspiciatis, in pariatur impedit, nam facilis libero dolorem
+          dolores sunt inventore perferendis, aut sapiente modi nesciunt.
+        </Typography>
+      </Box> */}
+    </Box>
+  );
+}
+
+DrawerAppBar.propTypes = {
+  /**
+   * Injected by the documentation to work in an iframe.
+   * You won't need it on your project.
+   */
+  window: PropTypes.func,
 };
 
-export default Header;
+export default DrawerAppBar;

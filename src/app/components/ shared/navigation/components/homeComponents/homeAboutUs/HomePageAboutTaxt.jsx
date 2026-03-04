@@ -59,7 +59,7 @@ const HomePageAboutTaxt = () => {
       </div>
       {/* description */}
       <div
-        className="flex md:flex-col gap-3 md:gap-10 w-full md:text-left
+        className="md:flex-col gap-3 md:gap-10 w-full md:text-left
        font-poppins font-normal text-[16px] text-dark-blue-color"
       >
         <p>
